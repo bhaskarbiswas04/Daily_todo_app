@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
+// import 'package:dailytodo_flutter/modals/task.dart';
 
-class TaskTile extends StatefulWidget {
-  const TaskTile({super.key});
+class TaskTile extends StatelessWidget {
+  const TaskTile(
+      {super.key,
+      required this.taskTitle,
+      required this.isChecked,
+      required this.checkBoxCallBack});
 
-  @override
-  State<TaskTile> createState() => _TaskTileState();
-}
-
-class _TaskTileState extends State<TaskTile> {
-  bool isChecked = true;
+  final bool isChecked;
+  final String taskTitle;
+  final Function(bool?) checkBoxCallBack;
 
   // void currentCheckState
 
@@ -16,38 +18,18 @@ class _TaskTileState extends State<TaskTile> {
   Widget build(BuildContext context) {
     return ListTile(
       title: Text(
-        'First Task hero',
+        taskTitle,
         style: TextStyle(
           decoration: isChecked ? TextDecoration.lineThrough : null,
           fontSize: 18,
         ),
       ),
-      trailing: TaskCheckBox(
-        checkboxState: isChecked,
-        currentCheckBoxState: (bool? checkBoxState) {
-          setState(() {
-            isChecked = checkBoxState!;
-          });
+      trailing: Checkbox(
+        value: isChecked,
+        onChanged: (newValue) {
+          checkBoxCallBack(newValue);
         },
       ),
-    );
-  }
-}
-
-class TaskCheckBox extends StatelessWidget {
-  const TaskCheckBox(
-      {super.key,
-      required this.checkboxState,
-      required this.currentCheckBoxState});
-
-  final bool checkboxState;
-  final Function(bool?) currentCheckBoxState;
-
-  @override
-  Widget build(BuildContext context) {
-    return Checkbox(
-      value: checkboxState,
-      onChanged: currentCheckBoxState,
     );
   }
 }
