@@ -29,12 +29,13 @@ class AddTaskScreen extends StatelessWidget {
             ),
             const TextField(
               textAlign: TextAlign.center,
-              autofocus: true,
+              autofocus: true, //This will automatically open the text field.
             ),
             const SizedBox(
               height: 15,
             ),
             MaterialButton(
+              padding: const EdgeInsets.symmetric(vertical: 10),
               color: Colors.amber,
               onPressed: () {},
               child: const Text(
