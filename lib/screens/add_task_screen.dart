@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class AddTaskScreen extends StatelessWidget {
-  const AddTaskScreen({super.key});
+  const AddTaskScreen({super.key, required this.newTaskCallBack});
+
+  final Function newTaskCallBack;
 
   @override
   Widget build(BuildContext context) {
+    String? newTaskTitle;
+
     return Container(
       color: const Color(0xff757575),
       child: Container(
@@ -27,9 +32,12 @@ class AddTaskScreen extends StatelessWidget {
                 fontSize: 30,
               ),
             ),
-            const TextField(
+            TextField(
               textAlign: TextAlign.center,
               autofocus: true, //This will automatically open the text field.
+              onChanged: (value) {
+                newTaskTitle = value;
+              },
             ),
             const SizedBox(
               height: 15,
@@ -37,7 +45,9 @@ class AddTaskScreen extends StatelessWidget {
             MaterialButton(
               padding: const EdgeInsets.symmetric(vertical: 10),
               color: Colors.amber,
-              onPressed: () {},
+              onPressed: () {
+                newTaskCallBack(newTaskTitle);
+              },
               child: const Text(
                 'ADD',
                 style: TextStyle(fontSize: 18),
