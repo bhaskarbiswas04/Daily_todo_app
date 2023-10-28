@@ -1,7 +1,7 @@
-import 'package:dailytodo_flutter/modals/task_data.dart';
 import 'package:flutter/material.dart';
-import 'package:dailytodo_flutter/widgets/task_tile.dart';
 import 'package:provider/provider.dart';
+import 'package:dailytodo_flutter/widgets/task_tile.dart';
+import 'package:dailytodo_flutter/modals/task_data.dart';
 
 // ignore: must_be_immutable
 class TaskList extends StatelessWidget {
@@ -12,17 +12,19 @@ class TaskList extends StatelessWidget {
       builder: (context, taskdata, child) {
         return ListView.builder(
           itemBuilder: (context, index) {
+            final task = taskdata.tasks[index];
             return TaskTile(
-              taskTitle: taskdata.taskList[index].name,
-              isChecked: taskdata.taskList[index].isDone,
-              checkBoxCallBack: (callBackState) {
-                // setState(() {
-                //   widget.tasks[index].toggleDone();
-                // });
+              taskTitle: task.name,
+              isChecked: task.isDone,
+              checkBoxCallBack: (checkboxState) {
+                taskdata.updateTask(task);
+              },
+              longPressCallBack: () {
+                taskdata.deleteTask(task);
               },
             );
           },
-          itemCount: taskdata.taskList.length,
+          itemCount: taskdata.tasks.length,
         );
       },
     );

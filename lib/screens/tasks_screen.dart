@@ -1,6 +1,6 @@
-import 'package:dailytodo_flutter/screens/add_task_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:dailytodo_flutter/widgets/task_list.dart';
+import 'package:dailytodo_flutter/screens/add_task_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:dailytodo_flutter/modals/task_data.dart';
 
@@ -14,17 +14,10 @@ class TasksScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showModalBottomSheet(
-              context: context,
-              builder: (context) =>
-                  AddTaskScreen(newTaskCallBack: (newTaskTitle) {
-                    // setState(() {
-                    //   taskList.add(Task(name: newTaskTitle));
-                    // });
-                    Navigator.pop(context);
-                  }));
+              context: context, builder: (context) => const AddTaskScreen());
         },
         backgroundColor: const Color(0xff9DB2BF),
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -59,7 +52,7 @@ class TasksScreen extends StatelessWidget {
                   height: 5,
                 ),
                 Text(
-                  '${Provider.of<TaskData>(context).taskList.length} Tasks.',
+                  '${Provider.of<TaskData>(context).taskCount} Tasks.',
                   style: const TextStyle(color: Colors.white70, fontSize: 18.0),
                 ),
                 const SizedBox(

@@ -1,10 +1,11 @@
+import 'package:dailytodo_flutter/modals/task.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:dailytodo_flutter/modals/task_data.dart';
 
 // ignore: must_be_immutable
 class AddTaskScreen extends StatelessWidget {
-  const AddTaskScreen({super.key, required this.newTaskCallBack});
-
-  final Function newTaskCallBack;
+  const AddTaskScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +47,9 @@ class AddTaskScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 10),
               color: Colors.amber,
               onPressed: () {
-                newTaskCallBack(newTaskTitle);
+                Provider.of<TaskData>(context, listen: false)
+                    .addTask(newTaskTitle!);
+                Navigator.pop(context);
               },
               child: const Text(
                 'ADD',
