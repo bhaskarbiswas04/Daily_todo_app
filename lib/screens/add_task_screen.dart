@@ -1,4 +1,3 @@
-import 'package:dailytodo_flutter/modals/task.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:dailytodo_flutter/modals/task_data.dart';
@@ -12,7 +11,7 @@ class AddTaskScreen extends StatelessWidget {
     String? newTaskTitle;
 
     return Container(
-      color: const Color(0xff757575),
+      color: const Color(0xffA6F6FF),
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 20),
         decoration: const BoxDecoration(
@@ -29,7 +28,7 @@ class AddTaskScreen extends StatelessWidget {
               'Add Task',
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: Colors.amber,
+                color: Color(0xff8E8FFA),
                 fontSize: 30,
               ),
             ),
@@ -45,7 +44,7 @@ class AddTaskScreen extends StatelessWidget {
             ),
             MaterialButton(
               padding: const EdgeInsets.symmetric(vertical: 10),
-              color: Colors.amber,
+              color: Color(0xff8E8FFA),
               onPressed: () {
                 Provider.of<TaskData>(context, listen: false)
                     .addTask(newTaskTitle!);

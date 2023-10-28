@@ -10,13 +10,13 @@ class TasksScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xff836096),
+      backgroundColor: const Color(0xff6499E9),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showModalBottomSheet(
               context: context, builder: (context) => const AddTaskScreen());
         },
-        backgroundColor: const Color(0xff9DB2BF),
+        backgroundColor: const Color(0xff6499E9),
         child: const Icon(Icons.add),
       ),
       body: Column(
@@ -34,7 +34,7 @@ class TasksScreen extends StatelessWidget {
                   child: Icon(
                     Icons.list_rounded,
                     size: 40,
-                    color: Color.fromARGB(255, 203, 139, 237),
+                    color: Color(0xff9EDDFF),
                   ),
                 ),
                 const SizedBox(
